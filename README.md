@@ -1,16 +1,86 @@
-# React + Vite
+# Portfolio Frontend — yuceldayan.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single-page portfolio site with a built-in content management panel. Every section
+on the public page — about, experience, projects, contact — is served from a REST
+API and editable from an admin panel behind JWT authentication, so the site never
+needs a redeploy to change its content.
 
-Currently, two official plugins are available:
+**Live:** [yuceldayan.com](https://yuceldayan.com) · **API:** [yucel-portfolio-backend](https://github.com/Yuceldayan/yucel-portfolio-backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## What it does
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Public page**
+- Hero, About, Experience and Projects sections rendered from live API data
+- Project detail modal with cover image, tech stack and links
+- Contact form that posts straight to the API
+- Floating WhatsApp button, SEO tags via `react-helmet-async`
+- `robots.txt`, `sitemap.xml` and an Open Graph image included
 
-## Expanding the ESLint configuration
+**Admin panel** (JWT-gated by `AdminGate`)
+- Projects — full CRUD with display ordering
+- Experience — CRUD over the timeline entries
+- About — edit the biography block
+- Contacts — read messages submitted through the contact form
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | React 18 + Vite |
+| Styling | Tailwind CSS (via `@tailwindcss/postcss`) |
+| Routing | React Router 7 |
+| HTTP | Axios, wrapped in a single `src/api/http.js` client |
+| Icons | lucide-react |
+| SEO | react-helmet-async |
+| Hosting | Vercel, with SPA rewrites in `vercel.json` |
+
+## Project layout
+
+```
+src/
+├── api/                  one axios client + a module per resource
+│   ├── http.js           base instance, reads VITE_API_BASE_URL
+│   ├── about.js
+│   ├── contact.js
+│   ├── experiences.js
+│   └── projects.js
+├── components/
+│   ├── HeroSection.jsx        AboutSection.jsx
+│   ├── ExperienceSection.jsx  ProjectsSection.jsx
+│   ├── ProjectCard.jsx        ProjectDetailModal.jsx
+│   ├── ContactSection.jsx     WhatsappButton.jsx
+│   └── AdminGate.jsx          Layout.jsx
+├── pages/                HomePage + four Admin* pages
+├── routes/               AppRoutes.jsx
+└── styles/               globals.css
+```
+
+## Running locally
+
+```bash
+npm install
+npm run dev          # http://localhost:5173
+```
+
+The API base URL comes from a single environment variable:
+
+```
+VITE_API_BASE_URL=https://api.yuceldayan.com
+```
+
+This is a public build-time value, not a secret — Vite inlines every `VITE_*`
+variable into the client bundle. Point it at `http://localhost:8080` to develop
+against a local backend.
+
+```bash
+npm run build        # production build into dist/
+npm run preview      # serve that build locally
+npm run lint         # eslint
+```
+
+## Deployment
+
+Vercel builds `main` on every push. `vercel.json` rewrites all paths to
+`index.html` so client-side routes survive a hard refresh.
