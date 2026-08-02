@@ -5,7 +5,7 @@ on the public page — about, experience, projects, contact — is served from a
 API and editable from an admin panel behind JWT authentication, so the site never
 needs a redeploy to change its content.
 
-**Live:** [yuceldayan.com](https://yuceldayan.com) · **API:** [yucel-portfolio-backend](https://github.com/Yuceldayan/yucel-portfolio-backend)
+**Live:** [canlı site](https://yucel-portfolio-frontend.vercel.app) · **API:** [yucel-portfolio-backend](https://github.com/Yuceldayan/yucel-portfolio-backend)
 
 ---
 
