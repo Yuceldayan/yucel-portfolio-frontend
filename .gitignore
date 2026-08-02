@@ -25,3 +25,8 @@ dist-ssr
 
 # Local secrets (never commit)
 .env*.local
+
+# Environment variables - never committed
+.env
+.env.*
+!.env.example
