@@ -89,6 +89,23 @@ Vercel builds `main` on every push. `vercel.json` rewrites all paths to
 
 ## My role
 
-**Sole developer.** Design, build and deployment are all mine, on both sides of
-the wire: this client and the [Spring Boot API](https://github.com/Yuceldayan/yucel-portfolio-backend)
-behind it. The commit history here reflects that work commit by commit.
+**Sole developer.** Design, build and deployment are mine, on both sides of the
+wire: this client and the
+[Spring Boot API](https://github.com/Yuceldayan/yucel-portfolio-backend) behind
+it. The commit history here records the work step by step.
+
+**Public page** â€” Hero, About, Experience and Projects sections rendered from
+live API data, the project detail modal, the contact form, the floating WhatsApp
+button, and the SEO layer (`react-helmet-async`, `robots.txt`, `sitemap.xml`, an
+Open Graph image).
+
+**Admin panel** â€” Four pages behind `AdminGate`: projects with full CRUD and
+display ordering, experience entries, the about text, and the inbox of contact
+messages.
+
+**API layer** â€” One axios instance in `http.js` reading a single environment
+variable, with a module per resource (`projects`, `experiences`, `about`,
+`contact`) so no component talks to the network directly.
+
+**Deployment** â€” Tailwind setup, Vercel configuration and the SPA rewrite rule
+that keeps client-side routes alive through a hard refresh.
