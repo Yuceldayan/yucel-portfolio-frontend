@@ -84,3 +84,11 @@ npm run lint         # eslint
 
 Vercel builds `main` on every push. `vercel.json` rewrites all paths to
 `index.html` so client-side routes survive a hard refresh.
+
+---
+
+## My role
+
+**Sole developer.** Design, build and deployment are all mine, on both sides of
+the wire: this client and the [Spring Boot API](https://github.com/Yuceldayan/yucel-portfolio-backend)
+behind it. The commit history here reflects that work commit by commit.
