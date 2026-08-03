@@ -12,24 +12,61 @@ export default function ContactSection() {
 
   const [status, setStatus] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [mailtoUrl, setMailtoUrl] = useState("");
+
+  const ADRES = "dayanyucel14@gmail.com";
+
+  // Mesaj sunucuya iletilemediğinde, ziyaretçinin yazdığı metni kaybetmemek
+  // için aynı içeriği kendi e-posta uygulamasında açacak bir bağlantı üretir.
+  const mailtoLinkiUret = ({ name, email, subject, message }) => {
+    const konu = subject?.trim() || "Portfolyo üzerinden mesaj";
+    const govde = [
+      message?.trim(),
+      "",
+      "—",
+      name?.trim() ? `Gönderen: ${name.trim()}` : null,
+      email?.trim() ? `E-posta: ${email.trim()}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    return `mailto:${ADRES}?subject=${encodeURIComponent(
+      konu
+    )}&body=${encodeURIComponent(govde)}`;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMsg("");
+    setMailtoUrl("");
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim(),
+    };
 
     try {
-      await sendContact({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        subject: formData.subject.trim(),
-        message: formData.message.trim(),
-      });
+      await sendContact(payload);
 
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus(""), 3000);
     } catch (err) {
+      const durum = err?.response?.status;
+      const sunucuyaUlasilamadi =
+        durum === undefined || durum === 0 || durum >= 500;
+
+      if (sunucuyaUlasilamadi) {
+        // Mesaj formu şu an sunucuya ulaşamıyor. Ziyaretçiyi boşa düşürmek
+        // yerine yazdığı metni hazır bir e-postaya taşıyoruz.
+        setStatus("offline");
+        setMailtoUrl(mailtoLinkiUret(payload));
+        return;
+      }
+
       setStatus("error");
       setErrorMsg(
         err?.response?.data?.message || err?.message || "Mesaj gönderilemedi."
@@ -210,6 +247,69 @@ export default function ContactSection() {
                   </button>
 
                   {/* Status Messages */}
+                  {status === "offline" && (
+                    <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-300">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                          <svg
+                            className="w-5 h-5 text-amber-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-amber-300">
+                            Mesaj formu şu an çevrimdışı
+                          </p>
+                          <p className="text-xs text-amber-300/70">
+                            Yazdığınız mesaj kaybolmadı — aşağıdaki düğme onu
+                            e-posta uygulamanızda hazır olarak açar.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 flex flex-col sm:flex-row gap-2">
+                        <a
+                          href={mailtoUrl}
+                          className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-lg shadow-amber-500/25"
+                        >
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                          E-posta ile gönder
+                        </a>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            navigator.clipboard?.writeText(ADRES);
+                          }}
+                          className="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm text-amber-200 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 transition-all duration-300"
+                        >
+                          {ADRES}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                   {status === "success" && (
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/20 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-300">
                       <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
