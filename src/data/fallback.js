@@ -115,7 +115,7 @@ export const fallbackProjects = [
       "Çok aşamalı Dockerfile",
     ],
     repoUrl: "https://github.com/Yuceldayan/yucel-portfolio-frontend",
-    liveUrl: "https://yucel-portfolio-frontend.vercel.app",
+    liveUrl: "https://yuceldayan.vercel.app",
     coverImageUrl: null,
     createdAt: "2026-01-28T00:00:00Z",
     displayOrder: 4,
