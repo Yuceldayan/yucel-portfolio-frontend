@@ -297,7 +297,7 @@ export const fallbackAbout = {
   title: "Hakkımda",
   subtitle: "Software Developer · Bilgisayar Mühendisi",
   bio:
-    "Yeni mezun bir Bilgisayar Mühendisiyim. React ve Java Spring Boot ile uçtan uca web uygulamaları geliştiriyorum; Node.js, TypeScript ve PostgreSQL ile üretim seviyesinde projeler kurdum. Bitirme projemde YOLOv8 ve InsightFace ile bilgisayarlı görüyü üç servisli bir mimariye entegre ettim.\n\nÇalışma biçimim katmanlı mimari, test edilebilir kod ve yazılı dokümantasyon üzerine kurulu. Her projemin GitHub reposunda mimari açıklaması, kurulum talimatı ve projedeki rolüm ayrıca belirtilmiştir — koda bakmadan önce ne yaptığımı okuyabilirsiniz.\n\nTam zamanlı pozisyonlar için görüşmeye açığım; taşınmaya ve hibrit/uzaktan çalışmaya da açığım.",
+    "Yeni mezun bir Bilgisayar Mühendisiyim. React ve Java Spring Boot ile uçtan uca web uygulamaları geliştiriyorum; Node.js, TypeScript ve PostgreSQL ile üretim seviyesinde projeler kurdum. Bitirme projemde YOLOv8 ve InsightFace ile bilgisayarlı görüyü üç servisli bir mimariye entegre ettim.\n\nÇalışma biçimim katmanlı mimari, test edilebilir kod ve yazılı dokümantasyon üzerine kurulu. Kodunu paylaştığım her projenin GitHub reposunda mimari açıklaması, kurulum talimatı ve projedeki rolüm ayrıca belirtilmiştir — koda bakmadan önce ne yaptığımı okuyabilirsiniz. Müşteri projeleri ve henüz yayınlanmamış ürünlerin kaynak kodu özel; onlarda mimariyi anlatan bir doküma­na yönlendiriyorum.\n\nTam zamanlı pozisyonlar için görüşmeye açığım; taşınmaya ve hibrit/uzaktan çalışmaya da açığım.",
   highlights: [
     "Uçtan uca web geliştirme: React + Java Spring Boot",
     "Bilgisayarlı görü entegrasyonu: YOLOv8, InsightFace",
@@ -319,10 +319,10 @@ export const fallbackAbout = {
   ],
   techBackend: [
     "Java Spring Boot", "Node.js", "Express", "FastAPI", "REST API",
-    "PostgreSQL", "JPA/Hibernate", "Prisma", "Flyway", "Supabase",
+    "PostgreSQL", "JPA/Hibernate", "Prisma", "Flyway", "Supabase", "Redis",
   ],
   techTools: [
-    "Git", "GitHub", "Docker", "Vercel", "Render",
+    "Git", "GitHub", "Docker", "Vercel", "React Native", "Expo",
     "Linux", "Vitest", "Playwright", "OpenCV", "YOLOv8",
   ],
 };
