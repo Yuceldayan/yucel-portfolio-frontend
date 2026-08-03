@@ -1,5 +1,6 @@
 // src/components/ProjectDetailModal.jsx
 import { useEffect, useRef, useMemo, useState } from "react";
+import ProjectGallery from "./ProjectGallery";
 
 export default function ProjectDetailModal({ project, onClose }) {
   const modalRef = useRef(null);
@@ -104,6 +105,7 @@ export default function ProjectDetailModal({ project, onClose }) {
     : [];
 
   const features = Array.isArray(project.features) ? project.features : [];
+  const screenshots = Array.isArray(project.screenshots) ? project.screenshots : [];
   const createdAt = project.createdAt || project.date;
 
   // ✅ metin içinde mini vurgu (okunurluk + premium)
@@ -485,6 +487,9 @@ export default function ProjectDetailModal({ project, onClose }) {
               </ul>
             </div>
           )}
+
+          {/* Ekran görüntüleri */}
+          <ProjectGallery screenshots={screenshots} accent={accent} />
 
           {/* Details Grid */}
           {(createdLabel || liveUrl || coverImageUrl) && (

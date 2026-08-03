@@ -41,6 +41,15 @@ export const fallbackProjects = [
       "Docker Compose ile geliştirme ve üretim ortamı",
       "7 mimari karar kaydı (ADR) ve yayın güvenlik yol haritası",
     ],
+    // Dosyalar frontend/public/diyetisyen/ altına konur. Bir dosya yoksa
+    // galeri onu sessizce atlar; hiçbiri yoksa bölüm hiç görünmez.
+    screenshots: [
+      { src: "/diyetisyen/01.png", caption: "Diyetisyen paneli" },
+      { src: "/diyetisyen/02.png", caption: "Danışan listesi" },
+      { src: "/diyetisyen/03.png", caption: "Danışan detayı" },
+      { src: "/diyetisyen/04.png", caption: "Ölçüm takibi" },
+      { src: "/diyetisyen/05.png", caption: "Profil" },
+    ],
     repoUrl: null,
     liveUrl: null,
     coverImageUrl: null,
