@@ -277,7 +277,7 @@ export default function ProjectCard({ p, onOpen }) {
                 ${accent.repoBtn}
               `}
             >
-              Repository
+              {p?.repoLabel || "Repository"}
             </a>
           )}
         </div>

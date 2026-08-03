@@ -20,20 +20,20 @@ export const fallbackProjects = [
     shortDescription: [
       "Diyetisyenler danışanlarını, danışanlar programını mobilden takip eder",
       "Spring Boot modüler monolit + React admin + Astro landing + Expo mobil",
-      "17 alan modülü, 31 controller, 35 entity, 25 migration, 41 test",
+      "14 alan modülü, 32 controller, 35 entity, 25 migration, 324 test",
       "PostgreSQL, Redis, MinIO ve Caddy ile Docker üzerinde çalışır",
     ].join("\n"),
     description:
       "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı SaaS. Yayına hazırlanıyor.",
     longDescription:
-      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı bir SaaS. Şu an yayına hazırlanıyor.\n\nBackend'i modüler monolit olarak kurdum: tek uygulama ama on yedi ayrı alan modülü — kimlik doğrulama, hasta, diyetisyen, diyet planı, randevu, ölçüm, abonelik, ödeme, bildirim, rozet, yapay zekâ ve denetim kaydı. Her modül kendi sınırları içinde duruyor; monolitin işletme kolaylığını mikroservis disiplinine yakın bir ayrımla birleştiriyor. 31 controller, 35 entity, 25 migration ve 41 test var.\n\nÜç ayrı istemci var: diyetisyenlerin kullandığı React admin paneli (TanStack Query ile sunucu durumu yönetimi), Astro ile üretilen statik tanıtım sitesi ve Expo ile yazılmış mobil uygulama — push bildirim, güvenli depolama, fotoğraf yükleme ve çoklu dil desteğiyle.\n\nAltyapı Docker Compose üzerinde: PostgreSQL 16, Redis 7, S3 uyumlu nesne depolama için MinIO ve önünde Caddy. Bağımlılık sürümleri bilerek sabitlendi ve her sabitlemenin gerekçesi kod içinde yazılı.\n\nÜrün kararlarını mimari karar kaydı (ADR) olarak belgeledim: aboneliği biten hastanın verisine ne olacağı, yapay zekâ veri akışının KVKK ile ilişkisi, reşit olmayan danışan, uygulama içi satın alma komisyonu ve fiyatlandırma, paket düşürme davranışı, besin veritabanı seçimi ve mağaza uyumluluk kapıları.\n\nKaynak kodu şu an özel. Mimari, veri modeli veya belirli bir modül hakkında konuşmaktan memnuniyet duyarım.",
+      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı bir SaaS. Şu an yayına hazırlanıyor.\n\nBackend'i modüler monolit olarak kurdum: tek uygulama ama on dört ayrı alan modülü — kimlik doğrulama, hasta, diyetisyen, diyet planı, randevu, ölçüm, abonelik, ödeme, bildirim, rozet, yapay zekâ ve denetim kaydı. Her modül kendi sınırları içinde duruyor; monolitin işletme kolaylığını mikroservis disiplinine yakın bir ayrımla birleştiriyor. 310 Java dosyası, 32 controller, 35 entity, 25 migration ve 324 test var.\n\nÜç ayrı istemci var: diyetisyenlerin kullandığı React admin paneli (TanStack Query ile sunucu durumu yönetimi), Astro ile üretilen statik tanıtım sitesi ve Expo ile yazılmış mobil uygulama — push bildirim, güvenli depolama, fotoğraf yükleme ve çoklu dil desteğiyle.\n\nAltyapı Docker Compose üzerinde: PostgreSQL 16, Redis 7, S3 uyumlu nesne depolama için MinIO ve önünde Caddy. Bağımlılık sürümleri bilerek sabitlendi ve her sabitlemenin gerekçesi kod içinde yazılı.\n\nÜrün kararlarını mimari karar kaydı (ADR) olarak belgeledim: aboneliği biten hastanın verisine ne olacağı, yapay zekâ veri akışının KVKK ile ilişkisi, reşit olmayan danışan, uygulama içi satın alma komisyonu ve fiyatlandırma, paket düşürme davranışı, besin veritabanı seçimi ve mağaza uyumluluk kapıları.\n\nKaynak kodu şu an özel. Mimari, veri modeli veya belirli bir modül hakkında konuşmaktan memnuniyet duyarım.",
     technologies: [
       "Java 21", "Spring Boot 3.3", "PostgreSQL 16", "Redis", "MinIO (S3)",
       "React", "TanStack Query", "Astro", "Expo", "React Native",
       "Docker", "Caddy", "Testcontainers",
     ],
     features: [
-      "17 alan modülü: hasta, diyet planı, randevu, ölçüm, abonelik, ödeme…",
+      "14 alan modülü: hasta, diyet planı, randevu, ölçüm, abonelik, ödeme…",
       "Abonelik ve uygulama içi satın alma akışı",
       "Expo ile mobil uygulama: push bildirim, güvenli depolama, çoklu dil",
       "React admin paneli ve Astro ile statik tanıtım sitesi",
@@ -50,7 +50,10 @@ export const fallbackProjects = [
       { src: "/diyetisyen/04.png", caption: "Ölçüm takibi" },
       { src: "/diyetisyen/05.png", caption: "Profil" },
     ],
-    repoUrl: null,
+    // Kod özel; repo yalnızca mimari anlatımı ve ekran görüntülerini içeriyor,
+    // bu yüzden bağlantı "Repository" yerine ne olduğunu söyleyen bir etiket taşıyor.
+    repoUrl: "https://github.com/Yuceldayan/diyetisyen-platform",
+    repoLabel: "Mimari & Görseller",
     liveUrl: null,
     coverImageUrl: null,
     createdAt: "2026-07-27T00:00:00Z",

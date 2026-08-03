@@ -591,7 +591,7 @@ export default function ProjectDetailModal({ project, onClose }) {
                 rel="noreferrer"
                 onClick={handleLinkClick}
               >
-                Repository
+                {project.repoLabel || "Repository"}
               </a>
             )}
 
