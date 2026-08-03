@@ -71,8 +71,9 @@ export default function ExperienceSection({ items = [] }) {
                       "shadow-[var(--shadow-lg)]",
                       "transition-all duration-300 hover:-translate-y-1",
                       "hover:border-[rgba(0,212,255,0.20)] hover:shadow-[var(--shadow-xl)]",
-                      // ✅ kutular tok dursun
-                      "min-h-[520px] md:min-h-[560px]",
+                      // Sabit yükseklik yok: kısa içerikli kartın altında boşluk kalıyordu.
+                      // Yükseklik satırdaki en uzun karta göre belirlenir.
+                      "h-full",
                       // ✅ zigzag daha az
                       i % 2 === 1 ? "md:translate-y-2" : "",
                     ].join(" ")}

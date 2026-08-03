@@ -104,7 +104,7 @@ export const fallbackProjects = [
     description:
       "Ders notu ve çıkmış soru paylaşım platformu; moderasyondan geçmeden hiçbir doküman görünmez.",
     longDescription:
-      "Öğrenciler üniversite, bölüm ve ders hiyerarşisinde gezinip ders notu ve çıkmış soru paylaşıyor, PDF'leri tarayıcıda okuyor, işine yarayanları favoriliyor. Yüklenen her doküman moderasyondan geçmeden görünür olmuyor.\n\nUçtan uca TypeScript: Express + Prisma API'si ve React istemcisi tek repoda, tipleri ve test kurulumunu paylaşıyorlar. Sekiz Prisma modelini ve arkasındaki migration zincirini ben tasarladım.\n\nAltı alan modülünün her birini controller → service → repository ayrımında kurdum; HTTP işi, iş kuralları ve veri erişimi birbirine karışmıyor. Doğrulama uçta zod şemalarıyla yapılıyor, hatalar tek bir error-handler üzerinden HTTP kodlarına eşleniyor.\n\nErişim kurallarını tek yerde topladım: moderasyondan geçmemiş bir doküman, hangi rotadan istenirse istensin erişilemiyor — sadece bariz olandan değil. Kimlik doğrulama httpOnly çerezde JWT ile, rol bazlı korumalar hem sunucuda hem istemcide.\n\n19 test paketi var ve tüm yığın tek komutla Docker üzerinde ayağa kalkıyor.",
+      "Öğrenciler üniversite, bölüm ve ders hiyerarşisinde gezinip ders notu ve çıkmış soru paylaşıyor, PDF'leri tarayıcıda okuyor, işine yarayanları favoriliyor. Yüklenen her doküman moderasyondan geçmeden görünür olmuyor.\n\nUçtan uca TypeScript: Express + Prisma API'si ve React istemcisi tek repoda, tipleri ve test kurulumunu paylaşıyorlar. Sekiz Prisma modelini ve arkasındaki migration zincirini ben tasarladım.\n\nAltı alan modülünün her birini controller → service → repository ayrımında kurdum; HTTP işi, iş kuralları ve veri erişimi birbirine karışmıyor. Doğrulama uçta zod şemalarıyla yapılıyor, hatalar tek bir error-handler üzerinden HTTP kodlarına eşleniyor.\n\nErişim kurallarını tek yerde topladım: moderasyondan geçmemiş bir doküman, hangi rotadan istenirse istensin erişilemiyor — sadece bariz olandan değil. Kimlik doğrulama httpOnly çerezde JWT ile, rol bazlı korumalar hem sunucuda hem istemcide.\n\n19 test paketi var ve tüm yığın tek komutla Docker üzerinde ayağa kalkıyor.\n\nBu, projenin ikinci sürümü. İlk sürüm tek dosyalık bir Express + Socket.IO uygulamasıydı ve gerçek zamanlı forum odaları içeriyordu; arşiv olarak github.com/Yuceldayan/academ-x-v1 adresinde duruyor.",
     technologies: [
       "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL",
       "React", "Vite", "zod", "pdfjs-dist", "Docker", "JWT", "bcrypt",
@@ -168,7 +168,7 @@ export const fallbackProjects = [
     description:
       "İçeriği admin panelinden yönetilen kişisel site ve arkasındaki Spring Boot REST API.",
     longDescription:
-      "Şu an baktığınız site. Arkasında tam bir içerik yönetim sistemi var: projeler, deneyimler, hakkımda metni ve gelen iletişim mesajları admin panelinden yönetiliyor. İçerik değiştirmek için kod değiştirmek ya da yeniden deploy etmek gerekmiyor.\n\nBackend'de controller'ları iki ayrı pakete böldüm — herkese açık okuma uçları ve kimlik doğrulaması gereken yazma uçları. Yetkilendirme böylece rotanın bir özelliği oluyor; servislerin içine dağılmış kontrollere bağlı kalmıyor.\n\nServisleri arayüz + implementasyon olarak ayırdım ve DTO'ları alan bazında paketledim, böylece JPA entity'leri API sınırının dışına hiç çıkmıyor. Hatalar tek bir GlobalExceptionHandler üzerinden yönetiliyor.\n\nŞema migration güdümlü: dokuz Flyway migration'ı ve ddl-auto: validate. Şema hiçbir zaman otomatik üretilmiyor, her değişiklik sürüm kontrolünde duruyor. JWT hem httpOnly çerezden hem Authorization başlığından okunuyor; aynı API'yi tarayıcı istemcisi de doğrudan istekler de kullanabiliyor.\n\nFrontend'de tüm ağ trafiği tek bir axios örneğinden geçiyor, her kaynak için ayrı modül var; hiçbir bileşen doğrudan ağa çıkmıyor. SEO tarafında meta etiketleri, robots.txt, sitemap.xml ve Open Graph görseli mevcut.",
+      "Şu an baktığınız site. Arkasında tam bir içerik yönetim sistemi var: projeler, deneyimler, hakkımda metni ve gelen iletişim mesajları admin panelinden yönetiliyor. İçerik değiştirmek için kod değiştirmek ya da yeniden deploy etmek gerekmiyor.\n\nBackend'de controller'ları iki ayrı pakete böldüm — herkese açık okuma uçları ve kimlik doğrulaması gereken yazma uçları. Yetkilendirme böylece rotanın bir özelliği oluyor; servislerin içine dağılmış kontrollere bağlı kalmıyor.\n\nServisleri arayüz + implementasyon olarak ayırdım ve DTO'ları alan bazında paketledim, böylece JPA entity'leri API sınırının dışına hiç çıkmıyor. Hatalar tek bir GlobalExceptionHandler üzerinden yönetiliyor.\n\nŞema migration güdümlü: dokuz Flyway migration'ı ve ddl-auto: validate. Şema hiçbir zaman otomatik üretilmiyor, her değişiklik sürüm kontrolünde duruyor. JWT hem httpOnly çerezden hem Authorization başlığından okunuyor; aynı API'yi tarayıcı istemcisi de doğrudan istekler de kullanabiliyor.\n\nFrontend'de tüm ağ trafiği tek bir axios örneğinden geçiyor, her kaynak için ayrı modül var; hiçbir bileşen doğrudan ağa çıkmıyor. SEO tarafında meta etiketleri, robots.txt, sitemap.xml ve Open Graph görseli mevcut.\n\nİki repo hâlinde duruyor: arayüz github.com/Yuceldayan/yucel-portfolio-frontend, API github.com/Yuceldayan/yucel-portfolio-backend.",
     technologies: [
       "React 18", "Vite", "Tailwind CSS", "React Router", "Axios",
       "Java 21", "Spring Boot", "Spring Security", "PostgreSQL",
@@ -264,6 +264,32 @@ export const fallbackProjects = [
     createdAt: "2025-03-01T00:00:00Z",
     displayOrder: 7,
   },
+  {
+    id: 9,
+    title: "VR/AR Başlıklarının Evrimi ve Kullanıcı Deneyimi",
+    shortDescription: [
+      "1968'den 2024'e VR/AR başlıklarının gelişimini anlatan tek sayfalık sunum",
+      "Çözülmemiş kullanıcı deneyimi sorunları tek tek ele alınıyor",
+      "Çerçevesiz: elle yazılmış HTML ve CSS, derleme adımı yok",
+      "30+ görsel webp/avif olarak sayfa hafif kalsın diye seçildi",
+    ].join("\n"),
+    description:
+      "VR/AR başlıklarının 1968–2024 arası gelişimini ve hâlâ çözülmemiş kullanıcı deneyimi sorunlarını anlatan tek sayfalık interaktif sunum.",
+    longDescription:
+      "Sutherland'ın 1968'deki ilk başlığından 2024'e uzanan bir zaman çizelgesi; her dönem kendi görselleriyle anlatılıyor. İkinci bölümde başlıkların hâlâ çözemediği kullanıcı deneyimi sorunları tek tek ele alınıyor: ergonomi ve ağırlık, denge bozulması, fiziksel rahatsızlık, kalabalık arayüzler, lens ve görüş sınırları, ses, dil desteği, bağlantı kopmaları, gizlilik ve maliyet.\n\nTek bir index.html ve elle yazılmış bir styles.css'ten oluşuyor — çerçeve kullanmadım. Düzen, geçişler ve duyarlı davranışın tamamı düz CSS. Otuzdan fazla görsel; her biri için webp, avif, png veya jpg'den hangisi daha hafifse o seçildi.\n\nAraştırma, metin, görsel seçimi, tasarım ve kodlama bana ait.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+    features: [
+      "1968–2024 arası dönemlere ayrılmış zaman çizelgesi",
+      "On başlıkta kullanıcı deneyimi sorunu analizi",
+      "Çerçevesiz, derleme adımsız tek sayfa",
+      "Görsel başına biçim seçimiyle sayfa ağırlığı optimizasyonu",
+    ],
+    repoUrl: "https://github.com/Yuceldayan/vr-ar-ux-presentation",
+    liveUrl: "https://yuceldayan.github.io/vr-ar-ux-presentation/",
+    coverImageUrl: null,
+    createdAt: "2025-12-01T00:00:00Z",
+    displayOrder: 8,
+  },
 ];
 
 export const fallbackAbout = {
@@ -313,7 +339,12 @@ export const fallbackExperiences = [
     published: true,
     orderIndex: 1,
     description:
-      "Tasarımcı bir arkadaşımla ikili çalıştım: tasarım yönünü o belirledi, uygulamayı ben kurdum ve kodladım. WordPress ve React tabanlı e-ticaret modüllerini geliştirdim; WooCommerce ödeme sistemi, sipariş takibi ve ürün yönetimi entegrasyonlarını tamamladım. Mobil uyumluluk ve site performansı optimizasyonunu üstlendim.",
+      "Tasarımcı bir arkadaşımla ikili çalıştım: tasarım yönünü o belirledi, uygulamayı ben kurdum ve kodladım.",
+    bulletsText: [
+      "WordPress ve React tabanlı e-ticaret modüllerini kodladım.",
+      "WooCommerce ödeme sistemi, sipariş takibi ve ürün yönetimi entegrasyonlarını tamamladım.",
+      "Mobil uyumluluk ve site performansı optimizasyonunu üstlendim.",
+    ].join("\n"),
     technologiesText: "WordPress, WooCommerce, PHP, React, CSS",
   },
   {
@@ -327,7 +358,12 @@ export const fallbackExperiences = [
     published: true,
     orderIndex: 2,
     description:
-      "10 kişilik bir ekipte gönüllü olarak yer aldım. Benim sorumluluğumdaki parça React tarafındaki CSV upload, çoklu dosya yükleme ve progress tracking modülleriydi; bunları tasarlayıp entegre ettim. Git ile versiyon kontrolü ve branch yönetimi süreçlerinde aktif rol aldım.",
+      "10 kişilik bir ekipte gönüllü olarak yer aldım. Aşağıdakiler benim sorumluluğumdaki parçalardı.",
+    bulletsText: [
+      "React tarafındaki CSV upload ve çoklu dosya yükleme modüllerini tasarlayıp entegre ettim.",
+      "Yükleme sürecinde ilerleme takibini (progress tracking) geliştirdim.",
+      "Git ile versiyon kontrolü ve branch yönetimi süreçlerinde aktif rol aldım.",
+    ].join("\n"),
     technologiesText: "React, JavaScript, Git",
   },
   {
@@ -341,8 +377,13 @@ export const fallbackExperiences = [
     published: true,
     orderIndex: 3,
     description:
-      "İki yıl boyunca ortaokul ve lise öğrencilerine haftalık uygulamalı yazılım ve teknoloji eğitimi verdim. Temel programlama, algoritma ve proje geliştirme konularında ders anlattım; öğrencilere proje geliştirme sürecinde birebir mentörlük yaptım.",
-    technologiesText: "Eğitim, Mentörlük",
+      "İki yıl boyunca ortaokul ve lise öğrencilerine haftalık uygulamalı yazılım ve teknoloji eğitimi verdim.",
+    bulletsText: [
+      "Temel programlama ve algoritma konularında ders anlattım.",
+      "Öğrencilere kendi projelerini geliştirme sürecinde birebir mentörlük yaptım.",
+      "Haftalık ders içeriklerini uygulamalı olacak şekilde hazırladım.",
+    ].join("\n"),
+    technologiesText: "Eğitim, Mentörlük, Algoritma",
   },
   {
     id: 4,
@@ -355,7 +396,12 @@ export const fallbackExperiences = [
     published: true,
     orderIndex: 4,
     description:
-      "Kulüp faaliyetlerinin planlanmasında görev aldım; teknik proje ekipleri arasındaki koordinasyon süreçlerini yürüttüm.",
-    technologiesText: "",
+      "Kulübün yönetim kurulunda görev aldım.",
+    bulletsText: [
+      "Kulüp faaliyetlerinin planlanmasında görev aldım.",
+      "Teknik proje ekipleri arasındaki koordinasyon süreçlerini yürüttüm.",
+      "Yarışma başvuru ve hazırlık takvimlerinin takibine katkı verdim.",
+    ].join("\n"),
+    technologiesText: "Ekip Koordinasyonu, Etkinlik Planlama",
   },
 ];
