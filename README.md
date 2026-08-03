@@ -67,7 +67,7 @@ npm run dev          # http://localhost:5173
 The API base URL comes from a single environment variable:
 
 ```
-VITE_API_BASE_URL=https://api.yuceldayan.com
+VITE_API_BASE_URL=http://localhost:8080
 ```
 
 This is a public build-time value, not a secret — Vite inlines every `VITE_*`
