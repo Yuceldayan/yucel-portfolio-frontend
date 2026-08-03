@@ -44,10 +44,10 @@ export const fallbackProjects = [
     // Dosyalar frontend/public/diyetisyen/ altına konur. Bir dosya yoksa
     // galeri onu sessizce atlar; hiçbiri yoksa bölüm hiç görünmez.
     screenshots: [
-      { src: "/diyetisyen/01-tanitim-anasayfa.png", caption: "Astro ile üretilen tanıtım sitesi" },
-      { src: "/diyetisyen/02-ingilizce-surum.png", caption: "Aynı sayfanın İngilizce sürümü" },
-      { src: "/diyetisyen/03-kvkk-metni.png", caption: "KVKK aydınlatma metni" },
-      { src: "/diyetisyen/04-hesap-silme.png", caption: "Uygulama içi hesap silme (mağaza şartı)" },
+      { src: "/diyetisyen/01-tanitim-anasayfa.webp", caption: "Astro ile üretilen tanıtım sitesi" },
+      { src: "/diyetisyen/02-ingilizce-surum.webp", caption: "Aynı sayfanın İngilizce sürümü" },
+      { src: "/diyetisyen/03-kvkk-metni.webp", caption: "KVKK aydınlatma metni" },
+      { src: "/diyetisyen/04-hesap-silme.webp", caption: "Uygulama içi hesap silme (mağaza şartı)" },
     ],
     // Kod özel; repo yalnızca mimari anlatımı ve ekran görüntülerini içeriyor,
     // bu yüzden bağlantı "Repository" yerine ne olduğunu söyleyen bir etiket taşıyor.
@@ -89,7 +89,7 @@ export const fallbackProjects = [
     liveUrl: null,
     coverImageUrl: null,
     createdAt: "2026-06-01T00:00:00Z",
-    displayOrder: 1,
+    displayOrder: 2,
   },
   {
     id: 2,
@@ -121,7 +121,7 @@ export const fallbackProjects = [
     liveUrl: null,
     coverImageUrl: null,
     createdAt: "2026-07-14T00:00:00Z",
-    displayOrder: 2,
+    displayOrder: 3,
   },
   {
     id: 3,
@@ -153,7 +153,7 @@ export const fallbackProjects = [
     liveUrl: null,
     coverImageUrl: null,
     createdAt: "2026-07-29T00:00:00Z",
-    displayOrder: 3,
+    displayOrder: 4,
   },
   {
     id: 4,
@@ -186,7 +186,7 @@ export const fallbackProjects = [
     liveUrl: "https://yuceldayan.vercel.app",
     coverImageUrl: null,
     createdAt: "2026-01-28T00:00:00Z",
-    displayOrder: 4,
+    displayOrder: 5,
   },
   {
     id: 5,
@@ -217,7 +217,7 @@ export const fallbackProjects = [
     liveUrl: null,
     coverImageUrl: null,
     createdAt: "2026-07-01T00:00:00Z",
-    displayOrder: 5,
+    displayOrder: 6,
   },
   {
     id: 6,
@@ -242,7 +242,7 @@ export const fallbackProjects = [
     liveUrl: "https://senskids.com.tr",
     coverImageUrl: null,
     createdAt: "2025-08-01T00:00:00Z",
-    displayOrder: 6,
+    displayOrder: 7,
   },
   {
     id: 7,
@@ -261,7 +261,7 @@ export const fallbackProjects = [
     liveUrl: "https://www.tsunamitarimhayvancilik.com/",
     coverImageUrl: null,
     createdAt: "2025-03-01T00:00:00Z",
-    displayOrder: 7,
+    displayOrder: 8,
   },
   {
     id: 9,
@@ -287,7 +287,7 @@ export const fallbackProjects = [
     liveUrl: "https://yuceldayan.github.io/vr-ar-ux-presentation/",
     coverImageUrl: null,
     createdAt: "2025-12-01T00:00:00Z",
-    displayOrder: 8,
+    displayOrder: 9,
   },
 ];
 
