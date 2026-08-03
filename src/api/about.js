@@ -1,9 +1,11 @@
 // src/api/about.js
 import { api } from "./http";
+import { withFallback } from "./fallbackGuard";
+import { fallbackAbout } from "../data/fallback";
 
 // Public (ziyaretçi)
 export const getAbout = () => {
-  return api.get("/api/v1/public/about");
+  return withFallback(api.get("/api/v1/public/about"), fallbackAbout);
 };
 
 // Admin (panel)

@@ -1,14 +1,20 @@
 // src/api/projects.js
 import { api } from "./http";
+import { withFallback } from "./fallbackGuard";
+import { fallbackProjects } from "../data/fallback";
 
 // Public
-export const getProjects = () => api.get("/api/v1/public/projects");
+export const getProjects = () =>
+  withFallback(api.get("/api/v1/public/projects"), fallbackProjects);
 
 export const getProjectById = (id) => {
   if (id === undefined || id === null || id === "") {
     return Promise.reject(new Error("Project id gerekli"));
   }
-  return api.get(`/api/v1/public/projects/${id}`);
+  return withFallback(
+    api.get(`/api/v1/public/projects/${id}`),
+    fallbackProjects.find((p) => String(p.id) === String(id)) ?? null
+  );
 };
 
 // Admin (şimdilik auth yok)

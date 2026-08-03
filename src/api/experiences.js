@@ -1,8 +1,11 @@
 // src/api/experiences.js
 import { api } from "./http";
+import { withFallback } from "./fallbackGuard";
+import { fallbackExperiences } from "../data/fallback";
 
 // Public
-export const getExperiences = () => api.get("/api/v1/experiences");
+export const getExperiences = () =>
+  withFallback(api.get("/api/v1/experiences"), fallbackExperiences);
 
 // Admin
 export const adminListExperiences = () => api.get("/api/v1/admin/experiences");
