@@ -183,7 +183,7 @@ export default function HeroSection() {
                 </a>
 
                 <a
-                  href="https://github.com/yuceldayan"
+                  href="https://github.com/Yuceldayan"
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl text-white/60 border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-violet-500/20 hover:border-violet-500/40 hover:text-violet-300 transition-all duration-300 hover:scale-110"
@@ -195,7 +195,7 @@ export default function HeroSection() {
                 </a>
 
                 <a
-                  href="mailto:dayanyucel0304@gmail.com"
+                  href="mailto:dayanyucel14@gmail.com"
                   className="group flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl text-white/60 border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-emerald-500/20 hover:border-emerald-500/40 hover:text-emerald-300 transition-all duration-300 hover:scale-110"
                   aria-label="Email"
                 >

@@ -8,29 +8,38 @@
 // gerekmeden yeniden API'den okunur — bu dosya yalnızca yedektir.
 //
 // Alan adları API'nin döndürdüğü DTO'larla birebir aynıdır.
+//
+// NOT: `shortDescription` kart üzerinde satır satır maddeye çevrilir
+// (bkz. ProjectCard.jsx), bu yüzden her satır tek başına anlamlı ve kısa
+// olmalıdır. `longDescription` ise detay penceresinde paragraf olarak görünür.
 
 export const fallbackProjects = [
   {
     id: 1,
-    title: "GSS — Yapay Zekâ Destekli Güvenli Online Sınav ve Gözetim Sistemi",
-    shortDescription:
-      "Yüz tanıma, nesne tespiti ve ses analiziyle online sınav gözetimi. Bitirme projem.",
+    title: "GSS — Yapay Zekâ Destekli Sınav Gözetim Sistemi",
+    shortDescription: [
+      "Sınava girenin kimliğini yüz tanımayla doğrular",
+      "Telefon, tablet ve kulaklığı karede tespit eder",
+      "Ses seviyesi, sekme değişimi ve tam ekrandan çıkışı izler",
+      "Spring Boot API + React arayüz + FastAPI görü servisi",
+    ].join("\n"),
     description:
-      "Online sınavda kimlik doğrulama ve gözetim yapan üç servisli sistem.",
+      "Online sınavda kimlik doğrulama ve gözetim yapan üç servisli sistem. Bitirme projem.",
     longDescription:
-      "Bitirme projem. Online sınavı yapmak kolay, güvenmek zor. GSS önce sınava girenin kim olduğunu doğruluyor, sonra oturumu bir gözetmenin fark edeceği şeylere karşı izliyor: masanın altındaki telefon, karede beliren ikinci yüz, konuşma sesi, kameradan çıkma.\n\nÜç servisin de mimarisini ve kodunu tek başıma yazdım. Spring Boot API'de 13 controller, 13 JPA entity, Flyway migration zinciri ve JWT ile rol bazlı yetkilendirme var. React arayüzü öğrenci, öğretmen ve yönetici olmak üzere üç ayrı yüzeyden oluşuyor, i18next ile Türkçe/İngilizce çalışıyor. Görü işlemleri ayrı bir FastAPI servisinde: InsightFace Buffalo_L ile 512 boyutlu L2-normalize yüz embedding'i, YOLOv8 + Open Images V7 ile telefon/tablet/kulaklık tespiti, Web Audio API metrikleriyle ses seviyesi analizi.\n\nJava tarafını model bağımlılıklarından uzak tutmak için görüyü ayrı servise sunucudan sunucuya taşıdım. Tarayıcı tarafında da sekme değişimi, odak kaybı ve tam ekrandan çıkış denetimi var.",
+      "Bitirme projem. Online sınavı yapmak kolay, güvenmek zor. GSS önce sınava girenin kim olduğunu doğruluyor, sonra oturumu bir gözetmenin fark edeceği şeylere karşı izliyor: masanın altındaki telefon, karede beliren ikinci yüz, konuşma sesi, kameradan çıkma.\n\nÜç servisin de mimarisini ve kodunu tek başıma yazdım. Spring Boot API'de 13 controller, 13 JPA entity, Flyway migration zinciri ve JWT ile rol bazlı yetkilendirme var. React arayüzü öğrenci, öğretmen ve yönetici olmak üzere üç ayrı yüzeyden oluşuyor; i18next ile Türkçe ve İngilizce çalışıyor.\n\nGörü işlemleri ayrı bir FastAPI servisinde. InsightFace Buffalo_L ile 512 boyutlu L2-normalize yüz embedding'i çıkarıyorum; vektörler normalize olduğu için iki yüzü karşılaştırmak tek bir nokta çarpımına iniyor. Nesne tespitinde YOLOv8 ve Open Images V7 kullanıyorum; telefon kısmen görünürken bile yakalanıyor. Ses tarafında Web Audio API'den gelen dBFS ve RMS metrikleri değerlendiriliyor.\n\nJava tarafını model bağımlılıklarından uzak tutmak için görüyü ayrı servise taşıdım; ikisi sunucudan sunucuya konuşuyor. Şüpheli her durum, türü ve ağırlığıyla birlikte bir gözetim olayına dönüşüyor ve kare kanıt olarak saklanıyor. Öğretmen oturumu canlı izliyor, sonrasında olay zaman çizelgesini inceliyor.",
     technologies: [
       "Java 21", "Spring Boot 4", "PostgreSQL", "Flyway", "JWT",
       "React", "MUI", "i18next", "Python", "FastAPI",
-      "YOLOv8", "InsightFace", "ONNX Runtime",
+      "YOLOv8", "InsightFace", "ONNX Runtime", "Docker",
     ],
     features: [
       "Yüz kaydı ve sınav öncesi kimlik doğrulama",
-      "Telefon, tablet ve kulaklık tespiti",
-      "Ses seviyesi analizi",
-      "Sekme değişimi ve tam ekrandan çıkış denetimi",
+      "Telefon, tablet ve kulaklık tespiti (kısmi görünürlükte bile)",
+      "Web Audio API metrikleriyle ses seviyesi analizi",
+      "Sekme değişimi, odak kaybı ve tam ekrandan çıkış denetimi",
       "Öğretmen için canlı gözetim paneli ve olay zaman çizelgesi",
-      "Öğrenci bazlı risk özeti",
+      "Öğrenci bazlı risk özeti ve rıza yönetimi",
+      "13 controller, 13 JPA entity, 8 Flyway migration",
     ],
     repoUrl: "https://github.com/Yuceldayan/gss-online-exam-proctoring",
     liveUrl: null,
@@ -41,23 +50,28 @@ export const fallbackProjects = [
   {
     id: 2,
     title: "ACADEM-X — Akademik Doküman Paylaşım Platformu",
-    shortDescription:
-      "PDF yükleme, moderasyon ve tarayıcı içi görüntüleyici. Uçtan uca TypeScript.",
+    shortDescription: [
+      "Üniversite → bölüm → ders hiyerarşisinde ders notu paylaşımı",
+      "PDF yükleme, moderasyon kuyruğu ve tarayıcı içi görüntüleyici",
+      "Uçtan uca TypeScript: Express + Prisma API ve React istemci",
+      "19 test paketi, tek komutla ayağa kalkan Docker ortamı",
+    ].join("\n"),
     description:
-      "Üniversite → bölüm → ders hiyerarşisinde ders notu ve çıkmış soru paylaşımı.",
+      "Ders notu ve çıkmış soru paylaşım platformu; moderasyondan geçmeden hiçbir doküman görünmez.",
     longDescription:
-      "Üniversite, bölüm ve ders hiyerarşisinde ders notu ve çıkmış soru paylaşılan bir platform. Yüklenen PDF'ler moderasyondan geçmeden görünür olmuyor.\n\nUçtan uca TypeScript: Express + Prisma API'si ve React istemcisi tek repoda, tipleri ve test kurulumunu paylaşıyorlar. Sekiz Prisma modeli ve arkasındaki migration zincirini ben tasarladım. Altı alan modülünün her birini controller → service → repository ayrımında kurdum; doğrulama uçta zod şemalarıyla, hatalar tek bir error-handler üzerinden yönetiliyor.\n\nPDF yükleme hattı, depolama adaptörü ve erişim kuralları da bana ait — moderasyondan geçmemiş bir doküman hangi rotadan istenirse istensin erişilemiyor. 19 test paketi ve tek komutla ayağa kalkan Docker geliştirme ortamı var.",
+      "Öğrenciler üniversite, bölüm ve ders hiyerarşisinde gezinip ders notu ve çıkmış soru paylaşıyor, PDF'leri tarayıcıda okuyor, işine yarayanları favoriliyor. Yüklenen her doküman moderasyondan geçmeden görünür olmuyor.\n\nUçtan uca TypeScript: Express + Prisma API'si ve React istemcisi tek repoda, tipleri ve test kurulumunu paylaşıyorlar. Sekiz Prisma modelini ve arkasındaki migration zincirini ben tasarladım.\n\nAltı alan modülünün her birini controller → service → repository ayrımında kurdum; HTTP işi, iş kuralları ve veri erişimi birbirine karışmıyor. Doğrulama uçta zod şemalarıyla yapılıyor, hatalar tek bir error-handler üzerinden HTTP kodlarına eşleniyor.\n\nErişim kurallarını tek yerde topladım: moderasyondan geçmemiş bir doküman, hangi rotadan istenirse istensin erişilemiyor — sadece bariz olandan değil. Kimlik doğrulama httpOnly çerezde JWT ile, rol bazlı korumalar hem sunucuda hem istemcide.\n\n19 test paketi var ve tüm yığın tek komutla Docker üzerinde ayağa kalkıyor.",
     technologies: [
       "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL",
-      "React", "Vite", "zod", "pdfjs-dist", "Docker", "JWT",
+      "React", "Vite", "zod", "pdfjs-dist", "Docker", "JWT", "bcrypt",
     ],
     features: [
       "Üç seviyeli katalog: üniversite → bölüm → ders",
-      "PDF yükleme ve moderasyon kuyruğu",
-      "Tarayıcı içi PDF görüntüleyici",
+      "PDF yükleme, tür ve boyut doğrulaması",
+      "Moderasyon kuyruğu; onaylanmadan görünmez",
+      "pdfjs-dist ile tarayıcı içi görüntüleyici",
       "Favori, beğeni ve yorum",
       "httpOnly çerezde JWT, rol bazlı rota koruması",
-      "19 test paketi",
+      "19 test paketi, Docker Compose geliştirme ortamı",
     ],
     repoUrl: "https://github.com/Yuceldayan/academix-2.0",
     liveUrl: null,
@@ -68,23 +82,28 @@ export const fallbackProjects = [
   {
     id: 3,
     title: "HazırGrup — Grup Etkinlik Planlama Platformu",
-    shortDescription:
-      "Grup kur, paket seç, arkadaşlarınla oyla, rezervasyon gönder. Web + mobil.",
+    shortDescription: [
+      "Grup kur, bütçe ve tarih gir, uygun mekân paketlerini gör",
+      "Arkadaşlarını bağlantıyla davet et, birlikte oy verin",
+      "Kazanan paket için işletmeye rezervasyon talebi gider",
+      "479 birim/entegrasyon + 44 uçtan uca test",
+    ].join("\n"),
     description:
       "Arkadaş gruplarının 'nereye gidelim?' sorusunu tek akışta çözen şehir bazlı platform.",
     longDescription:
-      "Grup kurulur, kişi sayısı, bütçe ve tarih girilir, uygun mekân paketleri listelenir, arkadaşlar bağlantıyla davet edilip birlikte oy verir ve kazanan paket için işletmeye rezervasyon talebi gider.\n\nMonorepo olarak kurdum: Next.js web uygulaması, Expo mobil uygulaması ve dört paylaşılan paket (core, types, ui, validation). Supabase şemasını, 13 migration'ı ve row-level security politikalarını yazdım; RLS için ayrı bir SQL test paketi hazırladım.\n\nVeri erişimini adaptör deseniyle kurdum: Supabase anahtarı tanımlı değilken uygulama otomatik demo moduna düşüyor ve hiçbir kurulum gerekmeden tüm akış çalışıyor. 479 birim/entegrasyon ve 44 uçtan uca test yazdım.",
+      "Arkadaş gruplarının \"nereye gidelim?\" sorusunu tek akışta çözüyor. Grup kuruluyor, kişi sayısı, bütçe ve tarih giriliyor, uygun mekân paketleri listeleniyor, arkadaşlar bağlantıyla davet edilip birlikte oy veriyor ve kazanan paket için işletmeye rezervasyon talebi gidiyor.\n\nMonorepo olarak kurdum: Next.js web uygulaması, Expo mobil uygulaması ve dört paylaşılan paket — core (iş mantığı), types, ui (tasarım tokenları) ve validation.\n\nVeri erişimini adaptör deseniyle yazdım: uygulama katmanı verinin Supabase'den mi yoksa bellek içi demo deposundan mı geldiğini bilmiyor. Bu sayede depo klonlandığı anda hiçbir hesap açmadan çalışıyor; Supabase eklendiğinde tek satır uygulama kodu değişmiyor.\n\nSupabase şemasını, 13 migration'ı ve row-level security politikalarını yazdım. RLS politikaları asıl otorite; sunucu tarafındaki kontroller ve rota korumaları bunu tekrarlıyor. Davet tokenları veritabanında yalnızca SHA-256 özet olarak saklanıyor.\n\n479 birim/entegrasyon testi ve 44 uçtan uca test yazdım; ayrıca RLS politikaları için ayrı bir SQL test paketi var.",
     technologies: [
       "Next.js", "TypeScript", "React", "Expo", "Supabase",
-      "PostgreSQL", "Tailwind", "Vitest", "Playwright",
+      "PostgreSQL", "Tailwind CSS", "zod", "Vitest", "Playwright",
     ],
     features: [
       "7 adımlı plan sihirbazı",
       "Hesap açmadan davet ve oylama",
       "İşletme paneli: paket yönetimi, rezervasyon onayı",
-      "Yönetici paneli ve denetim kaydı",
+      "Yönetici paneli, başvuru inceleme ve denetim kaydı",
       "Expo ile mobil uygulama",
-      "479 birim + 44 uçtan uca test",
+      "Anahtarsız çalışan demo modu",
+      "479 birim/entegrasyon + 44 uçtan uca test",
     ],
     repoUrl: "https://github.com/Yuceldayan/hazirgrup",
     liveUrl: null,
@@ -94,13 +113,17 @@ export const fallbackProjects = [
   },
   {
     id: 4,
-    title: "Full-Stack Portfolio ve İçerik Yönetim Sistemi",
-    shortDescription:
-      "Şu an baktığınız site. Admin panelinden yönetilen, Spring Boot destekli CMS.",
+    title: "Portfolio ve İçerik Yönetim Sistemi",
+    shortDescription: [
+      "Şu an baktığınız site — arkasında tam bir CMS var",
+      "Projeler, deneyimler ve mesajlar admin panelinden yönetilir",
+      "İçerik değişikliği için yeniden deploy gerekmiyor",
+      "Spring Boot API + React 18 istemci, ikisi de bana ait",
+    ].join("\n"),
     description:
-      "İçeriği admin panelinden yönetilen kişisel site ve arkasındaki REST API.",
+      "İçeriği admin panelinden yönetilen kişisel site ve arkasındaki Spring Boot REST API.",
     longDescription:
-      "Şu an baktığınız site. Arkasında tam bir içerik yönetim sistemi var: projeler, deneyimler, hakkımda metni ve gelen iletişim mesajları admin panelinden yönetiliyor, içerik değiştirmek için kod değiştirmek gerekmiyor.\n\nBackend'de controller'ları iki ayrı pakete böldüm — herkese açık okuma uçları ve kimlik doğrulaması gereken yazma uçları. Servisler arayüz + implementasyon olarak ayrı, DTO'lar alan bazında paketli, böylece JPA entity'leri API sınırının dışına çıkmıyor. Şema migration güdümlü: 9 Flyway migration'ı ve ddl-auto: validate. JWT hem httpOnly çerezden hem Authorization başlığından okunuyor.\n\nFrontend'de tüm ağ trafiği tek bir axios örneğinden geçiyor, her kaynak için ayrı modül var. SEO tarafında meta etiketleri, robots.txt, sitemap.xml ve Open Graph görseli mevcut.",
+      "Şu an baktığınız site. Arkasında tam bir içerik yönetim sistemi var: projeler, deneyimler, hakkımda metni ve gelen iletişim mesajları admin panelinden yönetiliyor. İçerik değiştirmek için kod değiştirmek ya da yeniden deploy etmek gerekmiyor.\n\nBackend'de controller'ları iki ayrı pakete böldüm — herkese açık okuma uçları ve kimlik doğrulaması gereken yazma uçları. Yetkilendirme böylece rotanın bir özelliği oluyor; servislerin içine dağılmış kontrollere bağlı kalmıyor.\n\nServisleri arayüz + implementasyon olarak ayırdım ve DTO'ları alan bazında paketledim, böylece JPA entity'leri API sınırının dışına hiç çıkmıyor. Hatalar tek bir GlobalExceptionHandler üzerinden yönetiliyor.\n\nŞema migration güdümlü: dokuz Flyway migration'ı ve ddl-auto: validate. Şema hiçbir zaman otomatik üretilmiyor, her değişiklik sürüm kontrolünde duruyor. JWT hem httpOnly çerezden hem Authorization başlığından okunuyor; aynı API'yi tarayıcı istemcisi de doğrudan istekler de kullanabiliyor.\n\nFrontend'de tüm ağ trafiği tek bir axios örneğinden geçiyor, her kaynak için ayrı modül var; hiçbir bileşen doğrudan ağa çıkmıyor. SEO tarafında meta etiketleri, robots.txt, sitemap.xml ve Open Graph görseli mevcut.",
     technologies: [
       "React 18", "Vite", "Tailwind CSS", "React Router", "Axios",
       "Java 21", "Spring Boot", "Spring Security", "PostgreSQL",
@@ -113,6 +136,7 @@ export const fallbackProjects = [
       "JWT: httpOnly çerez veya Authorization başlığı",
       "SEO: meta etiketleri, sitemap, Open Graph",
       "Çok aşamalı Dockerfile",
+      "API kapalıyken paketlenmiş içerikle çalışan yedek katman",
     ],
     repoUrl: "https://github.com/Yuceldayan/yucel-portfolio-frontend",
     liveUrl: "https://yuceldayan.vercel.app",
@@ -123,14 +147,18 @@ export const fallbackProjects = [
   {
     id: 5,
     title: "Zagros Dijital — Kurumsal Site ve Talep Toplama Platformu",
-    shortDescription:
-      "Next.js + Supabase ile içerik yönetimli kurumsal site. Müşteri projesi.",
+    shortDescription: [
+      "Bir dijital ajans için kurumsal site ve dönüşüm platformu",
+      "Hizmet, sektör, proje ve rehber içerikleri panelden yönetilir",
+      "Teklif ve ücretsiz analiz formlarıyla talep toplama",
+      "13 SQL migration, row-level security, Vitest + Playwright",
+    ].join("\n"),
     description:
-      "Bir dijital ajans için kurumsal site ve talep toplama platformu.",
+      "Bir dijital ajans için içerik yönetimli kurumsal site ve talep toplama platformu.",
     longDescription:
-      "Bir dijital ajans için geliştirdiğim kurumsal site ve talep toplama platformu. Ziyaretçiler hizmetleri ve sektörleri geziyor, rehber içeriklerini okuyor, geçmiş projeleri inceliyor ve teklif talebi ya da ücretsiz dijital analiz formuyla dönüşüyor.\n\nBilgi mimarisi, Next.js uygulaması, Supabase şeması ve row-level security politikaları, içerik yönetim paneli, SEO ve erişilebilirlik çalışması ile test altyapısı bana ait. 13 sıralı SQL migration, Vitest ve Playwright test paketleri var. Metadata (sitemap, robots, Open Graph) sayfaların render ettiği içerikten üretiliyor, böylece birbirinden ayrışamıyor.\n\nMüşteri projesi olduğu için deposu özel.",
+      "Bir dijital ajans için geliştirdiğim kurumsal site ve talep toplama platformu. Ziyaretçiler hizmetleri ve sektörleri geziyor, rehber içeriklerini okuyor, geçmiş projeleri inceliyor ve teklif talebi ya da ücretsiz dijital analiz formuyla dönüşüyor.\n\nBilgi mimarisi, Next.js uygulaması, Supabase şeması ve row-level security politikaları, içerik yönetim paneli, SEO ve erişilebilirlik çalışması ile test altyapısı bana ait.\n\nHerkese açık site ile yönetim paneli tek uygulamada ama ayrı rota gruplarında; düzenleri birbirine karışmıyor. Veri erişim katmanı server-only ile korunuyor, böylece Supabase servis anahtarları istemci paketine hiçbir şekilde sızamıyor.\n\nsitemap, robots ve Open Graph metadata'sı sayfaların render ettiği içerikten üretiliyor; ikisi birbirinden ayrışamıyor. 13 sıralı SQL migration, Vitest ve Playwright test paketleri var. Kararların gerekçeleri 22 ayrı doküman olarak repoda duruyor.",
     technologies: [
-      "Next.js", "TypeScript", "Supabase", "PostgreSQL",
+      "Next.js", "TypeScript", "React", "Supabase", "PostgreSQL",
       "Tailwind CSS", "zod", "Vitest", "Playwright",
     ],
     features: [
@@ -139,6 +167,7 @@ export const fallbackProjects = [
       "Teklif ve ücretsiz analiz dönüşüm akışları",
       "Sitemap, robots ve Open Graph üretimi",
       "Erişilebilirlik ve SEO test paketleri",
+      "22 strateji ve karar dokümanı",
     ],
     repoUrl: null,
     liveUrl: null,
@@ -149,10 +178,13 @@ export const fallbackProjects = [
   {
     id: 6,
     title: "SensKids E-Ticaret Web Sitesi",
-    shortDescription:
-      "STEM oyuncak markası için WooCommerce tabanlı e-ticaret sitesi.",
+    shortDescription: [
+      "STEM oyuncak markası için WooCommerce e-ticaret altyapısı",
+      "Ödeme, sipariş takibi ve ürün yönetimi entegrasyonları",
+      "Tasarımcı bir arkadaşımla ikili çalışma",
+    ].join("\n"),
     description:
-      "WordPress ve WooCommerce ile kurulan e-ticaret altyapısı.",
+      "STEM oyuncak markası için kurduğum WooCommerce tabanlı e-ticaret altyapısı.",
     longDescription:
       "STEM oyuncak markası SensKids için e-ticaret altyapısını kurdum. Tasarım yönünü tasarımcı bir arkadaşım belirledi, siteyi ben kurdum ve kodladım.\n\nWordPress ve React tabanlı e-ticaret modüllerini geliştirdim; WooCommerce ödeme sistemi, sipariş takibi ve ürün yönetimi entegrasyonlarını tamamladım. Mobil uyumluluk ve site performansı optimizasyonu benim sorumluluğumdaydı.",
     technologies: ["WordPress", "WooCommerce", "PHP", "React", "CSS"],
@@ -171,10 +203,12 @@ export const fallbackProjects = [
   {
     id: 7,
     title: "Tsunami Tarım & Hayvancılık Web Sitesi",
-    shortDescription:
-      "HTML, CSS ve JavaScript ile geliştirdiğim kurumsal tanıtım sitesi.",
-    description:
-      "Kurumsal tanıtım web sitesi.",
+    shortDescription: [
+      "Kurumsal tanıtım sitesi: hizmetler, ürünler ve iletişim",
+      "HTML, CSS ve JavaScript ile duyarlı tasarım",
+      "İlk web projelerimden biri",
+    ].join("\n"),
+    description: "Kurumsal tanıtım web sitesi.",
     longDescription:
       "Tsunami Tarım & Hayvancılık için hizmet ve ürün bilgilerini kullanıcı dostu biçimde sunan kurumsal tanıtım sitesi. HTML, CSS ve JavaScript ile geliştirdiğim ilk web projelerimden biri; sayfa yapısı, duyarlı düzen, temel etkileşimler ve içerik yerleşimi üzerinde çalıştım.",
     technologies: ["HTML5", "CSS3", "JavaScript"],
@@ -192,18 +226,18 @@ export const fallbackAbout = {
   title: "Hakkımda",
   subtitle: "Software Developer · Bilgisayar Mühendisi",
   bio:
-    "Yeni mezun bir Bilgisayar Mühendisiyim. React ve Java Spring Boot ile uçtan uca web uygulamaları geliştiriyorum; Node.js, TypeScript ve PostgreSQL ile üretim seviyesinde projeler kurdum. Bitirme projemde YOLOv8 ve InsightFace ile bilgisayarlı görüyü üç servisli bir mimariye entegre ettim.\n\nÇalışma biçimim: katmanlı mimari, test edilebilir kod ve yazılı dokümantasyon. Her projemin GitHub reposunda mimari açıklaması, kurulum talimatı ve projedeki rolüm ayrıca belirtilmiştir.\n\nTaşınmaya ve hibrit/uzaktan çalışmaya açığım.",
+    "Yeni mezun bir Bilgisayar Mühendisiyim. React ve Java Spring Boot ile uçtan uca web uygulamaları geliştiriyorum; Node.js, TypeScript ve PostgreSQL ile üretim seviyesinde projeler kurdum. Bitirme projemde YOLOv8 ve InsightFace ile bilgisayarlı görüyü üç servisli bir mimariye entegre ettim.\n\nÇalışma biçimim katmanlı mimari, test edilebilir kod ve yazılı dokümantasyon üzerine kurulu. Her projemin GitHub reposunda mimari açıklaması, kurulum talimatı ve projedeki rolüm ayrıca belirtilmiştir — koda bakmadan önce ne yaptığımı okuyabilirsiniz.\n\nTam zamanlı pozisyonlar için görüşmeye açığım; taşınmaya ve hibrit/uzaktan çalışmaya da açığım.",
   highlights: [
     "Uçtan uca web geliştirme: React + Java Spring Boot",
     "Bilgisayarlı görü entegrasyonu: YOLOv8, InsightFace",
-    "Katmanlı mimari ve test edilebilir kod",
+    "Katmanlı mimari, test edilebilir kod ve yazılı dokümantasyon",
     "T3 Vakfı'nda 2 yıl gönüllü yazılım eğitmenliği",
   ],
   educationSchool: "Harran Üniversitesi",
   educationDepartment: "Bilgisayar Mühendisliği (Lisans)",
   educationYear: "Eylül 2022 – Haziran 2026",
   educationDesc:
-    "Bitirme projemde yapay zekâ destekli bir online sınav gözetim sistemi geliştirdim.",
+    "Bitirme projesi: GSS — Yapay Zekâ Destekli Güvenli Online Sınav ve Gözetim Sistemi.",
   educationTags: ["Bilgisayar Mühendisliği", "Bitirme Projesi: GSS"],
   goalsDesc:
     "Uçtan uca ürün geliştiren, mimarisini kuran ve kararlarının gerekçesini yazan bir yazılım geliştirici olmak.",
@@ -234,7 +268,7 @@ export const fallbackExperiences = [
     published: true,
     orderIndex: 1,
     description:
-      "Tasarımcı bir arkadaşımla ikili çalıştım; tasarım yönünü o belirledi, uygulamayı ben kurdum ve kodladım. WordPress ve React tabanlı e-ticaret modüllerini geliştirdim; WooCommerce ödeme sistemi, sipariş takibi ve ürün yönetimi entegrasyonlarını tamamladım. Mobil uyumluluk ve site performansı optimizasyonunu üstlendim.",
+      "Tasarımcı bir arkadaşımla ikili çalıştım: tasarım yönünü o belirledi, uygulamayı ben kurdum ve kodladım. WordPress ve React tabanlı e-ticaret modüllerini geliştirdim; WooCommerce ödeme sistemi, sipariş takibi ve ürün yönetimi entegrasyonlarını tamamladım. Mobil uyumluluk ve site performansı optimizasyonunu üstlendim.",
     technologiesText: "WordPress, WooCommerce, PHP, React, CSS",
   },
   {

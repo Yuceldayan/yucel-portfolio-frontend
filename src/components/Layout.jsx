@@ -330,7 +330,7 @@ export default function Layout() {
               <div className="flex items-center gap-3 text-xs sm:text-sm">
                 <a
                   className="text-white/55 hover:text-white font-semibold transition"
-                  href="https://github.com/yuceldayan"
+                  href="https://github.com/Yuceldayan"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -348,7 +348,7 @@ export default function Layout() {
                 <span className="text-white/20">•</span>
                 <a
                   className="text-white/55 hover:text-white font-semibold transition"
-                  href="mailto:dayanyucel0304@gmail.com"
+                  href="mailto:dayanyucel14@gmail.com"
                 >
                   E-posta
                 </a>

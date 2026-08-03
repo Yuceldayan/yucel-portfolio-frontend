@@ -294,7 +294,7 @@ export default function AdminProjectsPage() {
                     focus:border-indigo-500/40
                     focus:ring-2 focus:ring-indigo-500/40
                   "
-                  placeholder="https://yuceldayan.com"
+                  placeholder="https://yuceldayan.vercel.app"
                   value={form.liveUrl}
                   onChange={onChange("liveUrl")}
                 />
@@ -319,7 +319,7 @@ export default function AdminProjectsPage() {
                     focus:border-indigo-500/40
                     focus:ring-2 focus:ring-indigo-500/40
                   "
-                  placeholder="https://github.com/yuceldayan/..."
+                  placeholder="https://github.com/Yuceldayan/..."
                   value={form.repoUrl}
                   onChange={onChange("repoUrl")}
                 />

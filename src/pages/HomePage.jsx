@@ -84,8 +84,8 @@ export default function HomePage() {
     {
       icon: "📧",
       label: "E-posta",
-      value: "dayanyucel0304@gmail.com",
-      link: "mailto:dayanyucel0304@gmail.com",
+      value: "dayanyucel14@gmail.com",
+      link: "mailto:dayanyucel14@gmail.com",
     },
     {
       icon: "📱",
@@ -93,7 +93,7 @@ export default function HomePage() {
       value: "+90 541 157 91 58",
       link: "tel:+905411579158",
     },
-    { icon: "📍", label: "Konum", value: "Hakkari, Türkiye", link: null },
+    { icon: "📍", label: "Konum", value: "Mersin, Türkiye", link: null },
     {
       icon: "💼",
       label: "LinkedIn",
@@ -112,13 +112,13 @@ export default function HomePage() {
     {
       name: "GitHub",
       icon: "🐙",
-      url: "https://github.com/yuceldayan",
+      url: "https://github.com/Yuceldayan",
       variant: "ghost",
     },
     {
       name: "Email",
       icon: "✉️",
-      url: "mailto:dayanyucel0304@gmail.com",
+      url: "mailto:dayanyucel14@gmail.com",
       variant: "soft",
     },
   ];
@@ -142,7 +142,7 @@ export default function HomePage() {
 
       <div className="flex flex-col gap-16 md:gap-20">
         {/* Hero Section */}
-        <HeroSection projectsCount={projects.length} />
+        <HeroSection />
 
         {/* About Section (backend data) */}
         <AboutSection about={about} />

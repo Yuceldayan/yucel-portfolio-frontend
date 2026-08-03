@@ -398,14 +398,14 @@ export default function ContactSection() {
                   </p>
                   <div className="flex items-center gap-2 mb-3">
                     <a
-                      href="mailto:dayanyucel0304@gmail.com"
+                      href="mailto:dayanyucel14@gmail.com"
                       className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors break-all flex-1"
                     >
-                      dayanyucel0304@gmail.com
+                      dayanyucel14@gmail.com
                     </a>
                     <button
                       onClick={() => {
-                        navigator.clipboard.writeText("dayanyucel0304@gmail.com");
+                        navigator.clipboard.writeText("dayanyucel14@gmail.com");
                       }}
                       className="w-8 h-8 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 hover:border-cyan-500/40 flex items-center justify-center transition-all flex-shrink-0"
                       title="Kopyala"
@@ -447,7 +447,7 @@ export default function ContactSection() {
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span>24 saatte dönüş</span>
+                    <span>En kısa sürede dönüş</span>
                   </div>
 
                   <div className="flex flex-wrap gap-1.5">
@@ -499,7 +499,7 @@ export default function ContactSection() {
                     +90 541 157 91 58
                   </a>
 
-                  <p className="text-xs text-white/50 mb-2">Hafta içi 10:00 - 19:00</p>
+                  <p className="text-xs text-white/50 mb-2">Mesai saatleri içinde ulaşabilirsiniz</p>
                   <p className="text-xs text-purple-400 font-semibold mb-3">WhatsApp daha hızlı ⚡</p>
                 </div>
 
@@ -556,15 +556,15 @@ export default function ContactSection() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-white mb-2">Yeni Projeler İçin Açığım</h3>
-                    <p className="text-sm text-white/60">Proje ve iş birliklerine açığım.</p>
+                    <h3 className="text-lg font-bold text-white mb-2">Yeni İş Fırsatlarına Açığım</h3>
+                    <p className="text-sm text-white/60">Tam zamanlı pozisyonlar için görüşmeye açığım.</p>
                   </div>
                 </div>
 
                 {/* Services */}
                 <div>
                   <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-2">
-                    Hizmetler
+                    Güçlü Olduğum Alanlar
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     <div className="flex items-center gap-2 text-xs text-white/70">
@@ -576,7 +576,7 @@ export default function ContactSection() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>Modern Frontend UI/UX</span>
+                      <span>React &amp; Next.js arayüz</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-white/70">
                       <svg
@@ -598,7 +598,7 @@ export default function ContactSection() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>Admin Panel & Dashboard</span>
+                      <span>PostgreSQL &amp; veri modelleme</span>
                     </div>
                   </div>
                 </div>
@@ -606,26 +606,26 @@ export default function ContactSection() {
                 {/* Process */}
                 <div>
                   <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3">
-                    Nasıl Çalışıyoruz?
+                    Değerlendirmeye Açık Olduğum Roller
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs font-bold text-green-400 flex-shrink-0">
                         1
                       </span>
-                      <span className="text-xs text-white/80">Tanışma & Fikir Paylaşımı</span>
+                      <span className="text-xs text-white/80">Frontend Developer — React, Next.js</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs font-bold text-green-400 flex-shrink-0">
                         2
                       </span>
-                      <span className="text-xs text-white/80">Planlama & Yol Haritası</span>
+                      <span className="text-xs text-white/80">Backend Developer — Spring Boot, Node.js</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-xs font-bold text-green-400 flex-shrink-0">
                         3
                       </span>
-                      <span className="text-xs text-white/80">Geliştirme & Yayınlama</span>
+                      <span className="text-xs text-white/80">Full-Stack Developer</span>
                     </div>
                   </div>
                 </div>
@@ -641,7 +641,7 @@ export default function ContactSection() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span className="text-xs font-semibold text-green-400">5+ Canlı Proje</span>
+                    <span className="text-xs font-semibold text-green-400">Kaynak kodu açık projeler</span>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/20">
                     <svg
@@ -652,7 +652,7 @@ export default function ContactSection() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span className="text-xs font-semibold text-green-400">24 Saat Dönüş</span>
+                    <span className="text-xs font-semibold text-green-400">Yeni Mezun · 2026</span>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/20">
                     <svg
@@ -697,7 +697,7 @@ export default function ContactSection() {
                   <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-2">
                     Konum
                   </p>
-                  <p className="text-sm font-semibold text-white mb-1">Hakkari, Türkiye</p>
+                  <p className="text-sm font-semibold text-white mb-1">Mersin, Türkiye</p>
                   <p className="text-xs text-white/50 mb-3">GMT+3 (İstanbul)</p>
                 </div>
 
@@ -732,7 +732,7 @@ export default function ContactSection() {
 
                   <div className="flex flex-wrap gap-2">
                     <a
-                      href="https://github.com/yuceldayan"
+                      href="https://github.com/Yuceldayan"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 flex items-center justify-center transition-all"
