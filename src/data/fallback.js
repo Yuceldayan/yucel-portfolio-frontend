@@ -16,7 +16,7 @@
 export const fallbackProjects = [
   {
     id: 8,
-    title: "Diyetisyen Platformu — Abonelik Tabanlı SaaS",
+    title: "Denge — Diyetisyen ve Danışan Takip Platformu",
     shortDescription: [
       "Diyetisyenler danışanlarını, danışanlar programını mobilden takip eder",
       "Spring Boot modüler monolit + React admin + Astro landing + Expo mobil",
@@ -26,7 +26,7 @@ export const fallbackProjects = [
     description:
       "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı SaaS. Yayına hazırlanıyor.",
     longDescription:
-      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı bir SaaS. Şu an yayına hazırlanıyor.\n\nBackend'i modüler monolit olarak kurdum: tek uygulama ama on dört ayrı alan modülü — kimlik doğrulama, hasta, diyetisyen, diyet planı, randevu, ölçüm, abonelik, ödeme, bildirim, rozet, yapay zekâ ve denetim kaydı. Her modül kendi sınırları içinde duruyor; monolitin işletme kolaylığını mikroservis disiplinine yakın bir ayrımla birleştiriyor. 310 Java dosyası, 32 controller, 35 entity, 25 migration ve 324 test var.\n\nÜç ayrı istemci var: diyetisyenlerin kullandığı React admin paneli (TanStack Query ile sunucu durumu yönetimi), Astro ile üretilen statik tanıtım sitesi ve Expo ile yazılmış mobil uygulama — push bildirim, güvenli depolama, fotoğraf yükleme ve çoklu dil desteğiyle.\n\nAltyapı Docker Compose üzerinde: PostgreSQL 16, Redis 7, S3 uyumlu nesne depolama için MinIO ve önünde Caddy. Bağımlılık sürümleri bilerek sabitlendi ve her sabitlemenin gerekçesi kod içinde yazılı.\n\nÜrün kararlarını mimari karar kaydı (ADR) olarak belgeledim: aboneliği biten hastanın verisine ne olacağı, yapay zekâ veri akışının KVKK ile ilişkisi, reşit olmayan danışan, uygulama içi satın alma komisyonu ve fiyatlandırma, paket düşürme davranışı, besin veritabanı seçimi ve mağaza uyumluluk kapıları.\n\nKaynak kodu şu an özel. Mimari, veri modeli veya belirli bir modül hakkında konuşmaktan memnuniyet duyarım.",
+      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı bir SaaS. Ürün adı Denge; şu an yayına hazırlanıyor.\n\nBackend'i modüler monolit olarak kurdum: tek uygulama ama on dört ayrı alan modülü — kimlik doğrulama, hasta, diyetisyen, diyet planı, randevu, ölçüm, abonelik, ödeme, bildirim, rozet, yapay zekâ ve denetim kaydı. Her modül kendi sınırları içinde duruyor; monolitin işletme kolaylığını mikroservis disiplinine yakın bir ayrımla birleştiriyor. 310 Java dosyası, 32 controller, 35 entity, 25 migration ve 324 test var.\n\nÜç ayrı istemci var: diyetisyenlerin kullandığı React admin paneli (TanStack Query ile sunucu durumu yönetimi), Astro ile üretilen statik tanıtım sitesi ve Expo ile yazılmış mobil uygulama — push bildirim, güvenli depolama, fotoğraf yükleme ve çoklu dil desteğiyle.\n\nAltyapı Docker Compose üzerinde: PostgreSQL 16, Redis 7, S3 uyumlu nesne depolama için MinIO ve önünde Caddy. Bağımlılık sürümleri bilerek sabitlendi ve her sabitlemenin gerekçesi kod içinde yazılı.\n\nÜrün kararlarını mimari karar kaydı (ADR) olarak belgeledim: aboneliği biten hastanın verisine ne olacağı, yapay zekâ veri akışının KVKK ile ilişkisi, reşit olmayan danışan, uygulama içi satın alma komisyonu ve fiyatlandırma, paket düşürme davranışı, besin veritabanı seçimi ve mağaza uyumluluk kapıları.\n\nKaynak kodu şu an özel. Mimari, veri modeli veya belirli bir modül hakkında konuşmaktan memnuniyet duyarım.",
     technologies: [
       "Java 21", "Spring Boot 3.3", "PostgreSQL 16", "Redis", "MinIO (S3)",
       "React", "TanStack Query", "Astro", "Expo", "React Native",
@@ -44,11 +44,10 @@ export const fallbackProjects = [
     // Dosyalar frontend/public/diyetisyen/ altına konur. Bir dosya yoksa
     // galeri onu sessizce atlar; hiçbiri yoksa bölüm hiç görünmez.
     screenshots: [
-      { src: "/diyetisyen/01.png", caption: "Diyetisyen paneli" },
-      { src: "/diyetisyen/02.png", caption: "Danışan listesi" },
-      { src: "/diyetisyen/03.png", caption: "Danışan detayı" },
-      { src: "/diyetisyen/04.png", caption: "Ölçüm takibi" },
-      { src: "/diyetisyen/05.png", caption: "Profil" },
+      { src: "/diyetisyen/01-tanitim-anasayfa.png", caption: "Astro ile üretilen tanıtım sitesi" },
+      { src: "/diyetisyen/02-ingilizce-surum.png", caption: "Aynı sayfanın İngilizce sürümü" },
+      { src: "/diyetisyen/03-kvkk-metni.png", caption: "KVKK aydınlatma metni" },
+      { src: "/diyetisyen/04-hesap-silme.png", caption: "Uygulama içi hesap silme (mağaza şartı)" },
     ],
     // Kod özel; repo yalnızca mimari anlatımı ve ekran görüntülerini içeriyor,
     // bu yüzden bağlantı "Repository" yerine ne olduğunu söyleyen bir etiket taşıyor.

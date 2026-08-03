@@ -82,18 +82,27 @@ export default function ProjectGallery({ screenshots, accent }) {
       </div>
 
       <p className="mt-4 text-[12.5px] font-semibold text-white/45">
-        Görseller örnek (test) verisiyle alınmıştır; gerçek kullanıcı bilgisi içermez.
+        Görseller ürünün kendi yüzeylerinden alınmıştır; gerçek kullanıcı verisi içermez.
       </p>
 
       {/* Büyük görünüm */}
       {acik && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={acik.caption || "Görsel önizleme"}
           className="fixed inset-0 z-[120] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8"
-          onClick={(e) => {
-            e.stopPropagation();
-            setAcikIndex(null);
-          }}
         >
+          {/* Arka plana tıklayınca kapanır. Tıklanabilir olduğu için gerçek bir
+              buton; div'e onClick vermek klavye kullanıcısını dışarıda bırakırdı. */}
+          <button
+            type="button"
+            aria-label="Önizlemeyi kapat"
+            tabIndex={-1}
+            onClick={() => setAcikIndex(null)}
+            className="absolute inset-0 cursor-default"
+          />
+
           <button
             type="button"
             aria-label="Kapat"
@@ -101,7 +110,7 @@ export default function ProjectGallery({ screenshots, accent }) {
               e.stopPropagation();
               setAcikIndex(null);
             }}
-            className="absolute top-4 right-4 rounded-full border border-white/15 bg-white/10 p-2.5 text-white/80 hover:bg-white/20 hover:text-white transition-all"
+            className="absolute top-4 right-4 z-10 rounded-full border border-white/15 bg-white/10 p-2.5 text-white/80 hover:bg-white/20 hover:text-white transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -117,7 +126,7 @@ export default function ProjectGallery({ screenshots, accent }) {
                   e.stopPropagation();
                   setAcikIndex((i) => (i - 1 + liste.length) % liste.length);
                 }}
-                className="absolute left-3 sm:left-6 rounded-full border border-white/15 bg-white/10 p-3 text-white/80 hover:bg-white/20 hover:text-white transition-all"
+                className="absolute left-3 sm:left-6 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white/80 hover:bg-white/20 hover:text-white transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -130,7 +139,7 @@ export default function ProjectGallery({ screenshots, accent }) {
                   e.stopPropagation();
                   setAcikIndex((i) => (i + 1) % liste.length);
                 }}
-                className="absolute right-3 sm:right-6 rounded-full border border-white/15 bg-white/10 p-3 text-white/80 hover:bg-white/20 hover:text-white transition-all"
+                className="absolute right-3 sm:right-6 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white/80 hover:bg-white/20 hover:text-white transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -139,7 +148,7 @@ export default function ProjectGallery({ screenshots, accent }) {
             </>
           )}
 
-          <figure className="flex max-h-full flex-col items-center gap-3" onClick={(e) => e.stopPropagation()}>
+          <figure className="relative z-10 flex max-h-full flex-col items-center gap-3">
             <img
               src={acik.src}
               alt={acik.caption || "Uygulama ekranı"}
