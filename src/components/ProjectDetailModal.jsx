@@ -37,45 +37,27 @@ export default function ProjectDetailModal({ project, onClose }) {
     e.stopPropagation();
   };
 
-  if (!project) return null;
-
-  const title = project.title || "Proje";
-  const liveUrl = project.liveUrl || project.liveURL || project.demoUrl;
-  const repoUrl = project.repoUrl || project.githubUrl;
-
-  const coverImageUrl =
-    project.coverImageUrl || project.cover_image_url || project.image || null;
-
-  const technologies = Array.isArray(project.technologies)
-    ? project.technologies
-    : Array.isArray(project.tech)
-    ? project.tech
-    : typeof project.stack === "string"
-    ? project.stack.split(" • ").filter(Boolean)
-    : [];
-
-  const features = Array.isArray(project.features) ? project.features : [];
-  const createdAt = project.createdAt || project.date;
-
-  // açıklama
+  // Hook'lar her render'da aynı sırayla çalışmak zorunda, bu yüzden
+  // açıklamadan türetilen değerler aşağıdaki erken return'den ÖNCE hesaplanır.
+  // Aksi hâlde project null'dan dolu bir değere geçtiğinde React
+  // "Rendered more hooks than during the previous render" hatası verir.
   const descRaw = String(
-    project.longDescription ||
-      project.shortDescription ||
-      project.description ||
+    project?.longDescription ||
+      project?.shortDescription ||
+      project?.description ||
       ""
   ).trim();
 
-  // ✅ satır satır madde
+  // satır satır madde
   const descItems = useMemo(() => {
-    const lines = descRaw
+    return descRaw
       .split("\n")
       .map((s) => s.trim())
       .filter(Boolean)
       .map((s) => s.replace(/^[-•\d.)\s]+/, ""));
-    return lines;
   }, [descRaw]);
 
-  // ✅ paragraflaştır
+  // paragraflaştır
   const descParagraphs = useMemo(() => {
     if (!descRaw) return [];
 
@@ -103,6 +85,26 @@ export default function ProjectDetailModal({ project, onClose }) {
     if (buf.length) grouped.push(buf.join(" "));
     return grouped.length ? grouped : [descRaw];
   }, [descRaw]);
+
+  if (!project) return null;
+
+  const title = project.title || "Proje";
+  const liveUrl = project.liveUrl || project.liveURL || project.demoUrl;
+  const repoUrl = project.repoUrl || project.githubUrl;
+
+  const coverImageUrl =
+    project.coverImageUrl || project.cover_image_url || project.image || null;
+
+  const technologies = Array.isArray(project.technologies)
+    ? project.technologies
+    : Array.isArray(project.tech)
+    ? project.tech
+    : typeof project.stack === "string"
+    ? project.stack.split(" • ").filter(Boolean)
+    : [];
+
+  const features = Array.isArray(project.features) ? project.features : [];
+  const createdAt = project.createdAt || project.date;
 
   // ✅ metin içinde mini vurgu (okunurluk + premium)
   const emphasizeText = (text) => {

@@ -24,7 +24,6 @@ export default function AdminContactsPage() {
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const msgKind = useMemo(() => {

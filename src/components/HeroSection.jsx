@@ -1,7 +1,18 @@
 // src/components/HeroSection.jsx
 import { useEffect, useMemo, useState } from "react";
 
-export default function HeroSection({ projectsCount = 0 }) {
+// Arka plandaki dekoratif parçacıklar. Modül yüklenirken bir kez üretilir:
+// render sırasında Math.random çağırmak, bileşen her yeniden çizildiğinde
+// parçacıkların yerinden zıplamasına yol açardı.
+const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  delay: `${Math.random() * 5}s`,
+  duration: `${6 + Math.random() * 10}s`,
+}));
+
+export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
 
@@ -12,7 +23,13 @@ export default function HeroSection({ projectsCount = 0 }) {
   );
   const [roleIndex, setRoleIndex] = useState(0);
 
-  useEffect(() => setMounted(true), []);
+  // Giriş animasyonu: bayrağı bir sonraki çerçevede kaldırıyoruz. Böylece
+  // tarayıcı önce opacity-0 halini boyuyor ve geçiş gerçekten görünüyor;
+  // effect gövdesinde doğrudan setState çağırmak bunu atlayabiliyordu.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   // Typing effect
   useEffect(() => {
@@ -71,16 +88,7 @@ export default function HeroSection({ projectsCount = 0 }) {
         />
 
         {/* Floating Particles (stable positions) */}
-        {useMemo(() => {
-          const arr = Array.from({ length: 14 }, (_, i) => ({
-            id: i,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            delay: `${Math.random() * 5}s`,
-            duration: `${6 + Math.random() * 10}s`,
-          }));
-          return arr;
-        }, []).map((p) => (
+        {PARTICLES.map((p) => (
           <div
             key={p.id}
             className="absolute w-1 h-1 bg-indigo-400/40 rounded-full animate-float"

@@ -30,9 +30,8 @@ export default function HomePage() {
 
   useEffect(() => {
     // Projects
-    setLoading(true);
-    setErr("");
-
+    // loading ve err zaten bu değerlerle başlatılıyor, bu effect de yalnızca
+    // mount'ta çalışıyor; burada tekrar atamak boş bir render turu ekliyordu.
     getProjects()
       .then((res) => {
         setProjects(res?.data?.data || []);
@@ -52,10 +51,7 @@ export default function HomePage() {
       .then((res) => setAbout(res?.data?.data || null))
       .catch(() => setAbout(null));
 
-    // ✅ Experiences (Public)
-    setExpLoading(true);
-    setExpErr("");
-
+    // ✅ Experiences (Public) — expLoading/expErr de başlangıç değerleriyle aynı
     getExperiences()
       .then((res) => {
         // Backend'in cevabı bazen {data:{data:[]}} bazen direkt [] olabiliyor
