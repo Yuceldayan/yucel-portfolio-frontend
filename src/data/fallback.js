@@ -15,6 +15,39 @@
 
 export const fallbackProjects = [
   {
+    id: 8,
+    title: "Diyetisyen Platformu — Abonelik Tabanlı SaaS",
+    shortDescription: [
+      "Diyetisyenler danışanlarını, danışanlar programını mobilden takip eder",
+      "Spring Boot modüler monolit + React admin + Astro landing + Expo mobil",
+      "17 alan modülü, 31 controller, 35 entity, 25 migration, 41 test",
+      "PostgreSQL, Redis, MinIO ve Caddy ile Docker üzerinde çalışır",
+    ].join("\n"),
+    description:
+      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı SaaS. Yayına hazırlanıyor.",
+    longDescription:
+      "Diyetisyenlerin danışanlarını yönettiği, danışanların beslenme programını mobilden takip ettiği abonelik tabanlı bir SaaS. Şu an yayına hazırlanıyor.\n\nBackend'i modüler monolit olarak kurdum: tek uygulama ama on yedi ayrı alan modülü — kimlik doğrulama, hasta, diyetisyen, diyet planı, randevu, ölçüm, abonelik, ödeme, bildirim, rozet, yapay zekâ ve denetim kaydı. Her modül kendi sınırları içinde duruyor; monolitin işletme kolaylığını mikroservis disiplinine yakın bir ayrımla birleştiriyor. 31 controller, 35 entity, 25 migration ve 41 test var.\n\nÜç ayrı istemci var: diyetisyenlerin kullandığı React admin paneli (TanStack Query ile sunucu durumu yönetimi), Astro ile üretilen statik tanıtım sitesi ve Expo ile yazılmış mobil uygulama — push bildirim, güvenli depolama, fotoğraf yükleme ve çoklu dil desteğiyle.\n\nAltyapı Docker Compose üzerinde: PostgreSQL 16, Redis 7, S3 uyumlu nesne depolama için MinIO ve önünde Caddy. Bağımlılık sürümleri bilerek sabitlendi ve her sabitlemenin gerekçesi kod içinde yazılı.\n\nÜrün kararlarını mimari karar kaydı (ADR) olarak belgeledim: aboneliği biten hastanın verisine ne olacağı, yapay zekâ veri akışının KVKK ile ilişkisi, reşit olmayan danışan, uygulama içi satın alma komisyonu ve fiyatlandırma, paket düşürme davranışı, besin veritabanı seçimi ve mağaza uyumluluk kapıları.\n\nKaynak kodu şu an özel. Mimari, veri modeli veya belirli bir modül hakkında konuşmaktan memnuniyet duyarım.",
+    technologies: [
+      "Java 21", "Spring Boot 3.3", "PostgreSQL 16", "Redis", "MinIO (S3)",
+      "React", "TanStack Query", "Astro", "Expo", "React Native",
+      "Docker", "Caddy", "Testcontainers",
+    ],
+    features: [
+      "17 alan modülü: hasta, diyet planı, randevu, ölçüm, abonelik, ödeme…",
+      "Abonelik ve uygulama içi satın alma akışı",
+      "Expo ile mobil uygulama: push bildirim, güvenli depolama, çoklu dil",
+      "React admin paneli ve Astro ile statik tanıtım sitesi",
+      "Denetim kaydı ve rol bazlı erişim",
+      "Docker Compose ile geliştirme ve üretim ortamı",
+      "7 mimari karar kaydı (ADR) ve yayın güvenlik yol haritası",
+    ],
+    repoUrl: null,
+    liveUrl: null,
+    coverImageUrl: null,
+    createdAt: "2026-07-27T00:00:00Z",
+    displayOrder: 1,
+  },
+  {
     id: 1,
     title: "GSS — Yapay Zekâ Destekli Sınav Gözetim Sistemi",
     shortDescription: [
